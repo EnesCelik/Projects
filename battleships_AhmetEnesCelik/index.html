@@ -1,0 +1,256 @@
+<!--
+    Easter Egg Hunt - User Interface
+    @author: Copyright (C) 2018 Carlos Adan Cortes De la Fuente - All Rights Reserved
+    @email: krlozadan@gmail.com
+    @date: 16/02/2018
+-->
+<!doctype html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Easter Egg Hunter</title>
+
+        <!-- Font Awesome -->
+        <script src="https://use.fontawesome.com/0364114a66.js"></script>
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Roboto" rel="stylesheet">
+    	<!-- Game Styles -->
+        <link rel="stylesheet" href="./css/styles.css">
+        <!-- jQuery Google CDN -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!-- store.js - Copyright (c) 2010-2017 Marcus Westin -->
+        <script src="./js/lib/store.min.js"></script>
+        <!-- Howler (Sound Library) -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.9/howler.core.min.js"></script>
+    </head>
+    <body>
+    	<!-- Intro Screen -->
+    	<section class="intro" id="intro">
+			<div class="callout">
+				<h1>Welcome!</h1>
+				<p>Easter Eggs have been hidden all around the place, do you want to try and find them? Rules are simple:</p>
+                <ul>
+                    <li>Find all Easter Eggs</li>
+                    <li>Using limited amount of guesses</li>
+                </ul>
+                <p>So, what's it gonna be, are you in?</p>
+				<button id="intro-btn" class="button green full-width">Let's Play! <i class="fa fa-arrow-circle-right"></i></button>
+			</div>
+    	</section>
+
+        <!-- Main Screen -->
+        <div id="main-screen" class="main-screen hide">
+            <!-- Sidebar -->
+            <aside>
+                <section class="logo"></section>
+                <section class="side-content">
+                    <!-- Game Mode Selection -->
+                    <div id="pick-mode">
+                        <h2>Pick Mode!</h2>
+                        <button class="player-mode button green large" data-mode="1"><i class="fa fa-user"></i>  Single Player Game</button>
+                        <button class="player-mode button green large" data-mode="2"><i class="fa fa-user"></i><i class="fa fa-user"></i>  Two Player Game</button>
+                    </div>
+
+                    <!-- Player's Name -->
+                    <div id="players-name" class="hide">
+                        <h2>Who's playing?</h2>
+                        <form class="wood-content" id="player-form" name="player-form">
+                            <input type="text" minlength="3" maxlength="12" required placeholder="Player 1" name="player-1">
+                            <input type="hidden" minlength="3" maxlength="12" required placeholder="Player 2" name="player-2">
+                            <button type="submit" class="button green full-width">Next</button>
+                            <button id="cancel-form" type="button" class="button red full-width">Cancel</button>
+                        </form>
+                    </div>
+
+                    <!-- Hide Eggs  -->
+                    <!-- TBA Functionality -->
+                    <!-- <div id="hide-eggs" class="hide">
+                        <h2 class="turn">Player 1</h2>
+                        <div class="wood-content">
+                            <table class="eggs">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <span class="egg"></span>
+                                            <span class="egg"></span>
+                                        </td>
+                                        <td>0</td>
+                                        <td><i class="fa fa-check green-text"></i></td>
+                                    </tr>
+                                    <tr class="current">
+                                        <td>
+                                            <span class="egg"></span>
+                                            <span class="egg"></span>
+                                            <span class="egg"></span>
+                                        </td>
+                                        <td>2</td>
+                                        <td><i class="fa fa-times red-text"></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span class="egg"></span>
+                                            <span class="egg"></span>
+                                            <span class="egg"></span>
+                                            <span class="egg"></span>
+                                        </td>
+                                        <td>2</td>
+                                        <td><i class="fa fa-times red-text"></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span class="egg"></span>
+                                            <span class="egg"></span>
+                                            <span class="egg"></span>
+                                            <span class="egg"></span>
+                                            <span class="egg"></span>
+                                        </td>
+                                        <td>1</td>
+                                        <td><i class="fa fa-times red-text"></i></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <h2>Player 2</h2>
+                        <div class="wood-content">
+                            <table class="eggs">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <span class="egg"></span>
+                                            <span class="egg"></span>
+                                        </td>
+                                        <td>2</td>
+                                        <td><i class="fa fa-times red-text"></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span class="egg"></span>
+                                            <span class="egg"></span>
+                                            <span class="egg"></span>
+                                        </td>
+                                        <td>2</td>
+                                        <td><i class="fa fa-times red-text"></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span class="egg"></span>
+                                            <span class="egg"></span>
+                                            <span class="egg"></span>
+                                            <span class="egg"></span>
+                                        </td>
+                                        <td>2</td>
+                                        <td><i class="fa fa-times red-text"></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span class="egg"></span>
+                                            <span class="egg"></span>
+                                            <span class="egg"></span>
+                                            <span class="egg"></span>
+                                            <span class="egg"></span>
+                                        </td>
+                                        <td>1</td>
+                                        <td><i class="fa fa-times red-text"></i></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div> -->
+
+                    <!-- Game Status -->
+                    <div id="game-status" class="hide">
+                        <h2 class="turn" id="p1-turn">Player 1</h2>
+                        <div class="wood-content">
+                            <div class="player-status">
+                                <p id="p1-remaining-eggs">0 of 20</p>
+                                <p>Eggs</p>
+                                <p id="p1-guesses">0</p>
+                                <p>Guesses</p>
+                            </div>
+                        </div>
+                        <div id="player-2-status" class="hide">
+                            <h2 id="p2-turn">Player 2</h2>
+                            <div class="wood-content">
+                                <div class="player-status">
+                                    <p id="p2-remaining-eggs">0 of 20</p>
+                                    <p>Eggs</p>
+                                    <p id="p2-guesses">0</p>
+                                    <p>Guesses</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Scoreboard -->
+                    <div id="scoreboard" class="hide">
+                        <h2>Scoreboard</h2>
+                        <div class="wood-content">
+                            <table class="scoreboard">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Gueses Left</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="scores"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+                <footer>
+                    <!-- Score Board Buttons -->
+                    <button id="scoreboard-btn" class="button yellow"><i class="fa fa-list-ol"></i></button>
+                    <button id="scoreboard-exit" class="button red hide"><i class="fa fa-times"></i></button>
+                    <!-- Play / Pause Screen -->
+                    <button id="pause-btn" class="button yellow hide"><i class="fa fa-pause"></i></button>
+                    <button id="play-btn" class="button green hide"><i class="fa fa-play"></i></button>
+                    <!-- Music/SFX Sound Toggle -->
+                    <button id="volume-on" class="button green hide"><i class="fa fa-volume-up"></i></button>
+                    <button id="volume-off" class="button red"><i class="fa fa-volume-off"></i></button>
+                </footer>
+            </aside>
+            <!-- Main game Screen -->
+            <main>
+                <!-- Board -->
+                <div class="board hide" id="board-1"></div>
+                <div class="board hide" id="board-2"></div>
+
+                <!-- Hide Eggs -->
+                <!-- TBA -->
+                <!-- <div id="hide-eggs-modal" class="modal hide">
+                    <div class="wood-content">
+                        <h1>Hide Your Eggs!</h1>
+                        <button id="hide-eggs-btn" class="button green full-width">Continue</button>
+                    </div>
+                </div> -->
+
+                <!-- Pause -->
+                <div id="pause-modal" class="modal hide">
+                    <div class="wood-content">
+                        <h1>Game Paused</h1>
+                    </div>
+                </div>
+
+                <!-- Game Over -->
+                <div id="game-over" class="modal hide">
+                    <div class="wood-content">
+                        <h1 id="winner-msg">Player 1 Wins!</h1>
+                        <p id="scoreboard-msg" class="hide">Your game has allowed you to enter the scoreboard!</p>
+                        <button id="restart-game" class="button green full-width"><i class="fa fa-repeat"></i> Restart Game</button>
+                        <button id="main-menu" class="button yellow full-width"><i class="fa fa-home"></i> Main Menu</button>
+                    </div>
+                </div>
+            </main>
+        </div>
+        <!-- Scripts -->
+        <script src="./js/audio.js" defer></script>
+        <script src="./js/grid.js" defer></script>
+        <script src="./js/board.js" defer></script>
+        <script src="./js/player.js" defer></script>
+        <script src="./js/scoreboard.js" defer></script>
+        <script src="./js/game.js" defer></script>
+        <script src="./js/main.js" defer></script>
+    </body>
+</html>

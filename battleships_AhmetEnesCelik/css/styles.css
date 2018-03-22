@@ -1,0 +1,361 @@
+/*
+* Easter Egg Hunt App Styles
+* @author: Copyright (C) 2018 Carlos Adan Cortes De la Fuente - All Rights Reserved
+* @email: krlozadan@gmail.com
+* @date: 16/02/2018
+*/
+
+/****************************************
+Global Styles
+****************************************/
+* {
+    font-family: 'Roboto', sans-serif;
+}
+/* Helps making everything in the screen full width and height */
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+h1,
+h2,
+h3 {
+    font-family: 'Permanent Marker', cursive;
+}
+/* Reusable components, to be used in modals, sections */
+.callout {
+    padding: 2rem;
+    background-color: #9f5232;
+    border: 0.3rem inset #e8a12a;
+    background-image: url("../images/textures/wood.jpg");
+    background-repeat: repeat;
+    background-size: 20%;
+}
+.wood-content {
+    display: block;
+    margin: 0.5rem;
+    padding: 1rem;
+    background-image: url("../images/textures/sand.jpg");
+    background-repeat: repeat;
+    background-size: 50%;
+    background-position: center;
+    border: 0.3rem ridge #9f5232;
+}
+/* Helper classes for text */
+.green-text {
+    color: #649a45;
+}
+.red-text {
+    color: #fb5c5c;
+}
+/* Reusable buttons styles for the whole app */
+button.button {
+    color: #fff;
+    cursor: pointer;
+}
+button.button:focus {
+    outline: 0;
+}
+button.button.green {
+    background-color: #87cf5e;
+    border: 0.25rem dashed #649a45;
+}
+button.button.green:hover {
+    box-shadow: 0rem 0rem 2rem #649a45;
+}
+button.button.yellow {
+    background-color: #e8a12a;
+    border: 0.25rem dashed #9f5232;
+}
+button.button.yellow:hover {
+    box-shadow: 0rem 0rem 2rem #9f5232;
+}
+button.button.red {
+    background-color: #fb5c5c;
+    border: 0.25rem dashed #b70101;
+}
+button.button.red:hover {
+    box-shadow: 0rem 0rem 2rem #b70101;
+}
+button.button.full-width {
+    display: block;
+    width: 100%;
+    padding: 1rem 0.5rem;
+    font-size: 1.5rem;
+}
+button.button.full-width:not(:last-child) {
+    margin-bottom: 1rem;
+}
+button.button.large {
+    display: block;
+    width: 85%;
+    padding: 1rem 0.5rem;
+    font-size: 1.5rem;
+    margin: 1rem;
+}
+/* Helps displaying or hiding different UI components */
+.hide {
+    display: none !important;
+}
+/****************************************
+Intro Screen
+****************************************/
+section.intro {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 100%;
+    background-image: url("../images/logo.png"), url("../images/backgrounds/intro-bg.jpg");
+    background-repeat: no-repeat, no-repeat;
+    background-size: 20%, cover;
+    background-position: center 1rem, center;
+}
+section.intro div.callout {
+    flex-basis: 75%;
+    align-self: center;
+}
+section.intro div.callout h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin: 0;
+    color: #e8a12a;
+}
+section.intro div.callout p,
+section.intro div.callout li {
+    font-size: 1.25rem;
+    color: #fff7df;
+}
+/****************************************
+Game Screen
+****************************************/
+.main-screen {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+aside {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 25%;
+    height: 100%;
+    background-image: url("../images/textures/wood.jpg");
+    background-size: 40%;
+    background-repeat: repeat;
+    background-position: center;
+}
+main {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-basis: 75%;
+    height: 100%;
+    background-image: url("../images/backgrounds/grass.png"), url("../images/backgrounds/easter-eggs-horizontal.png"), url("../images/backgrounds/clouds.png"), linear-gradient(to bottom, #46c2f1 0%, #a8eeff 100%);
+    background-repeat: repeat-x, no-repeat, no-repeat, no-repeat;
+    background-size: 70%, 90%, 75%, cover;
+    background-position: bottom, right bottom, center top, center;
+    box-shadow: 0.25rem 0rem 1rem #545454 inset;
+}
+/****************************************
+Game Sidebar
+****************************************/
+.logo {
+    flex-basis: 20%;
+    background-image: url("../images/logo.png"), url("../images/textures/roof.jpg");
+    background-size: 75%, contain;
+    background-repeat: no-repeat, repeat-x;
+    background-position: center center, top;
+}
+.side-content {
+    flex-basis: 70%;
+}
+.side-content h2 {
+    margin: 0;
+    font-size: 2rem;
+    color: #e8a12a;
+    text-align: center;
+}
+/* Player names form styles */
+.side-content form input {
+    display: block;
+    margin: 1rem 0;
+    border: 0;
+    border-bottom: 0.2rem solid #9f5232;
+    width: 100%;
+    padding: 1rem 0 0.25rem;
+    background-color: transparent;
+    font-size: 1.2rem;
+    -webkit-appearance: none;
+    appearance: none;
+}
+.side-content form input:focus {
+    outline: 0;
+}
+/* Tables with player status info */
+.player-status {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.player-status p {
+    margin: 0;
+}
+.player-status p:nth-child(even) {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+.player-status p:nth-child(odd) {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 2rem;
+    color: #9f5232;
+}
+.player-status p:last-child {
+    margin-bottom: 0;
+}
+/* Highlight the players that has the next turn */
+h2.turn {
+    position: relative;
+    padding: 0 3rem;
+    color: #87cf5e;
+    text-shadow: 0.1rem 0.1rem 0.5rem #649a45, -0.1rem -0.1rem 0.5rem #649a45;
+}
+h2.turn::before {
+    position: absolute;
+    left: 0;
+    content: '>>';
+}
+h2.turn::after {
+    position: absolute;
+    right: 0;
+    content: '<<';
+}
+table {
+    width: 100%;
+    font-size: 1.2rem;
+    border-collapse: collapse;
+}
+table tr.current {
+    background-color: #9f5232;
+    color: #fff7df;
+}
+/* Creates the remaining eggs to be placed */
+.eggs tbody tr td:nth-child(1) {
+    width: 80%;
+    text-align: left;
+}
+.eggs tbody tr td:nth-child(2) {
+    width: 10%;
+    text-align: center;
+    font-family: 'Permanent Marker', cursive;
+}
+.eggs tbody tr td:nth-child(3) {
+    width: 10%;
+    text-align: center;
+}
+span.egg {
+    display: inline-block;
+    width: 1.8rem;
+    height: 1.8rem;
+    margin: 0;
+    background-image: url("../images/easter-egg.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+.scoreboard thead tr th {
+    text-decoration: underline;
+}
+.scoreboard thead tr th:nth-child(1) {
+    width: 50%;
+    text-align: left;
+}
+.scoreboard thead tr th:nth-child(2) {
+    width: 50%;
+    text-align: center;
+}
+.scoreboard tbody tr td:nth-child(1) {
+    width: 50%;
+    text-align: left;
+}
+.scoreboard tbody tr td:nth-child(2) {
+    width: 50%;
+    text-align: center;
+}
+/* Footer rounded buttons */
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-basis: 10%;
+}
+footer button {
+    align-self: center;
+    display: block;
+    margin: 0 0.5rem;
+    padding: 0.7rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    text-align: center;
+    font-size: 1.5rem;
+    border-radius: 100%;
+}
+/****************************************
+Game Board
+****************************************/
+.board {
+    display: flex;
+    flex-direction: row;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    flex-basis: 40rem;
+    align-self: center;
+    border: 0.5rem ridge #9f5232;
+    background-image: url("../images/textures/grass.jpg");
+    background-repeat: repeat;
+    background-size: cover;
+    background-position: center;
+}
+.cell {
+    padding: 0;
+    height: 3.5rem;
+    outline: 0.1rem solid #9f5232;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+.cell:hover {
+    box-shadow: 0rem 0rem 0.75rem #545454 inset;
+}
+.cell.egg {
+    background-image: url("../images/easter-egg.png");
+}
+.cell.empty {
+    background-image: url("../images/dirt.png");
+}
+/* TODO: REMOVE */
+/* .cell.test {
+    background-image: url("http://placehold.it/100x100");
+} */
+
+/****************************************
+Modal
+****************************************/
+.modal {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.75);
+}
+.modal div {
+    align-self: center;
+}
+.modal h1 {
+    margin: 0;
+    color: #9f5232;
+    text-align: center;
+}
